@@ -1,15 +1,21 @@
-##Introduction:
+## Introduction:
 
 This is a `ionic-numberpicker` bower component which can be used with any Ionic framework's application.
+
+**This project is a clone of [ionic-numberpicker](https://github.com/milkcan/ionic-numberpicker) some enhancements**
+
+### Enhancements
+* Ability to edit the whole number field
+* Ability to edit decimal number field
 
 It is based on the 'ionic-timepicker' and 'ionic-datepicker' by https://github.com/rajeshwarpatlolla 
 
 
-##Prerequisites.
+## Prerequisites.
 
 1) node.js, npm, ionic, bower and gulp.
 
-##How to use:
+## How to use:
 
 1) In your project repository install the ionic time picker using bower
 
@@ -66,7 +72,7 @@ $scope.numberPickerObject = {
 </div>
 ````
 
-##Versions:
+## Versions:
 
 ### 2) v1.1
 - Fixed issue with floating point math
@@ -75,12 +81,12 @@ $scope.numberPickerObject = {
 ### 1) v1.0
 - Number picker functionality has been implemented
 
-##License:
+## License:
 [MIT](https://github.com/milkcan/ionic-numberpicker/blob/master/LICENSE.MD "MIT")
 
-##Contact:
+## Contact:
 email : matt@milkcan.io
 
-##Other Links:
+## Other Links:
 - [GitHub](https://github.com/milkcan/ionic-numberpicker)
 - Rate it or Comment : [Ionic Marketplace](http://market.ionic.io/plugins/numberpicker)
