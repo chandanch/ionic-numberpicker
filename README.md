@@ -2,7 +2,7 @@
 
 This is a `ionic-numberpicker` bower component which can be used with any Ionic framework's application.
 
-**This project is a clone of [ionic-numberpicker](https://github.com/milkcan/ionic-numberpicker) some enhancements**
+**This project is a clone of [ionic-numberpicker](https://github.com/milkcan/ionic-numberpicker) with some enhancements**
 
 ### Enhancements
 * Ability to edit the whole number field
