@@ -32,6 +32,7 @@
                 scope.setButtonType = scope.inputObj.setButtonType ? scope.inputObj.setButtonType : 'button-positive';
                 scope.closeButtonType = scope.inputObj.closeButtonType ? scope.inputObj.closeButtonType : 'button-stable';
                 scope.wholeNumber = 0;
+                scope.selectedNumber = 0;
                 scope.decimalNumber = 0;
                 scope.isNegative = false;
                 scope.numericValue = Number(scope.wholeNumber + '.' + scope.decimalNumber);
@@ -102,6 +103,25 @@
                     return Math.abs(returnVal);
                 }
 
+                // Convert string to decimal number;
+                function convertToDecimal(number) {
+                    var decimalNumber;
+                    decimalNumber = 0+"."+number;
+                    return decimalNumber;
+
+                }
+
+                // Get Whole number and decimail number from input
+                function getWholeNumberFromInput() {
+                    var wholeNumberInput = document.getElementById("wholeinput").value;
+                    return wholeNumberInput;
+                }
+
+                function getDecimalNumberFromInput() {
+                    var decimalNumberInput = document.getElementById("decimalInput").value;
+                    return decimalNumberInput;
+                }
+
                 //Make sure number is not too high
                 scope.checkMax = function() {
                     if (scope.numericValue >= scope.maxValue) {
@@ -124,13 +144,12 @@
                 element.on("click", function() {
                     scope.inputValue = scope.inputObj.inputValue ? scope.inputObj.inputValue : 0;
                     if (scope.format == 'DECIMAL') {
-
                         //Get Values from Initial Number
                         scope.wholeNumber = findWholeNumber(Number(scope.inputValue));
                         scope.decimalNumber = scope.inputValue % 1;
                         scope.numericValue = Number(scope.wholeNumber) + Number(strip(scope.decimalNumber, scope.precision));
                         scope.decimalNumber = strip(scope.numericValue % 1);
-
+                
                         $ionicPopup.show({
                             templateUrl: 'ionic-numberpicker-decimal.html',
                             title: scope.titleLabel,
@@ -147,7 +166,12 @@
                                     text: scope.setLabel,
                                     type: scope.setButtonType,
                                     onTap: function(e) {
+                                        //console.log("Selected number before", scope.wholeNumber);
+                                        var wholeNumberInput = getWholeNumberFromInput();
+                                        var decimalNumberInput = getDecimalNumberFromInput();
                                         scope.loadingContent = true;
+                                        scope.wholeNumber = wholeNumberInput;
+                                        scope.decimalNumber = convertToDecimal(decimalNumberInput);
                                         scope.numericValue = Number(scope.wholeNumber) + Number(strip(scope.decimalNumber, scope.precision));
                                         scope.inputObj.callback(scope.numericValue);
                                     }
@@ -178,7 +202,6 @@
                                     type: scope.setButtonType,
                                     onTap: function(e) {
                                         scope.loadingContent = true;
-
                                         scope.inputObj.callback(scope.wholeNumber);
                                     }
                                 }

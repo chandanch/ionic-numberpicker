@@ -28,10 +28,10 @@
 ".numberPickerBoxText {\n" +
 "  color: #000;\n" +
 "  height: 40px;\n" +
+"  line-height: 40px;\n" +
 "  text-align: center;\n" +
 "  border: 1px solid #dddddd;\n" +
-"  font-size: 16px;\n" +
-"  padding-top: 5px;\n" +
+"  font-size: 1.5em;\n" +
 "}\n" +
 "\n" +
 ".overflowShow {\n" +

@@ -6,7 +6,7 @@
       <button type="button" class="button button-clear button-small button-dark numberPickerArrows marginBottom10"
               ng-click="increaseWhole()">
         <i class="icon ion-chevron-up"></i></button>
-      <div ng-bind="wholeNumber" class="ipBoxes numberPickerBoxText"></div>
+        <input type="text" id="wholeinput" class="ipBoxes numberPickerBoxText" value="wholeNumber" ng-model="wholeNumber"/>
       <button type="button" class="button button-clear button-small button-dark numberPickerArrows marginTop10"
               ng-click="decreaseWhole()">
         <i class="icon ion-chevron-down"></i></button>
@@ -15,7 +15,7 @@
     <span class="button-small col col-25">
       <button type="button" class="button button-clear button-small button-dark numberPickerArrows marginBottom10"
               ng-click="increaseDecimal()"><i class="icon ion-chevron-up"></i></button>
-      <div ng-bind="decimalDisplay()" class="ipBoxes numberPickerBoxText"></div>
+      <input type="text" ng-bind="decimalDisplay()" value="{{decimalDisplay()}}" class="ipBoxes numberPickerBoxText" id="decimalInput"/>
       <button type="button" class="button button-clear button-small button-dark numberPickerArrows marginTop10"
               ng-click="decreaseDecimal()"><i class="icon ion-chevron-down"></i></button>
     </span>

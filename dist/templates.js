@@ -5,8 +5,20 @@ try {
   module = angular.module('ionic-numberpicker.templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('ionic-numberpicker-array.html',
+    '<div class=WholeNumberPickerChildDiv><div class=row><div class="col text-center" ng-repeat="item in numberArray track by $index"><label class=numberPickerWhole></label> <button type=button class="button button-clear button-small button-dark numberPickerArrows marginBottom10" ng-click=increaseNumber($index)><i class="icon ion-chevron-up"></i></button><div ng-bind=item class="ipBoxes numberPickerBoxText"></div><button type=button class="button button-clear button-small button-dark numberPickerArrows marginTop10" ng-click=decreaseNumber($index)><i class="icon ion-chevron-down"></i></button> <label class=numberPickerDecimal>{{ unit }}</label></div></div></div>');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('ionic-numberpicker.templates');
+} catch (e) {
+  module = angular.module('ionic-numberpicker.templates', []);
+}
+module.run(['$templateCache', function($templateCache) {
   $templateCache.put('ionic-numberpicker-decimal.html',
-    '<div class=DecimalPickerChildDiv><div class=row><label class="col col-offset-10 col-10 numberPickerDecimal" ng-show=isNegative>-</label> <label class="col col-offset-10 col-10 numberPickerDecimal" ng-hide=isNegative></label> <span class="button-small col col-25"><button type=button class="button button-clear button-small button-dark numberPickerArrows marginBottom10" ng-click=increaseWhole()><i class="icon ion-chevron-up"></i></button><div ng-bind=wholeNumber class="ipBoxes numberPickerBoxText"></div><button type=button class="button button-clear button-small button-dark numberPickerArrows marginTop10" ng-click=decreaseWhole()><i class="icon ion-chevron-down"></i></button></span> <label class="col col-10 numberPickerDecimal">{{ decimalCharacter }}</label> <span class="button-small col col-25"><button type=button class="button button-clear button-small button-dark numberPickerArrows marginBottom10" ng-click=increaseDecimal()><i class="icon ion-chevron-up"></i></button><div ng-bind=decimalDisplay() class="ipBoxes numberPickerBoxText"></div><button type=button class="button button-clear button-small button-dark numberPickerArrows marginTop10" ng-click=decreaseDecimal()><i class="icon ion-chevron-down"></i></button></span> <label class="col numberPickerDecimal">{{ unit }}</label></div></div>');
+    '<div class=DecimalPickerChildDiv><div class=row><label class="col col-offset-10 col-10 numberPickerDecimal" ng-show=isNegative>-</label> <label class="col col-offset-10 col-10 numberPickerDecimal" ng-hide=isNegative></label> <span class="button-small col col-25"><button type=button class="button button-clear button-small button-dark numberPickerArrows marginBottom10" ng-click=increaseWhole()><i class="icon ion-chevron-up"></i></button> <input type=text id=wholeinput class="ipBoxes numberPickerBoxText" value=wholeNumber ng-model=wholeNumber> <button type=button class="button button-clear button-small button-dark numberPickerArrows marginTop10" ng-click=decreaseWhole()><i class="icon ion-chevron-down"></i></button></span> <label class="col col-10 numberPickerDecimal">{{ decimalCharacter }}</label> <span class="button-small col col-25"><button type=button class="button button-clear button-small button-dark numberPickerArrows marginBottom10" ng-click=increaseDecimal()><i class="icon ion-chevron-up"></i></button> <input type=text ng-bind=decimalDisplay() value={{decimalDisplay()}} class="ipBoxes numberPickerBoxText" id=decimalInput> <button type=button class="button button-clear button-small button-dark numberPickerArrows marginTop10" ng-click=decreaseDecimal()><i class="icon ion-chevron-down"></i></button></span> <label class="col numberPickerDecimal">{{ unit }}</label></div></div>');
 }]);
 })();
 
