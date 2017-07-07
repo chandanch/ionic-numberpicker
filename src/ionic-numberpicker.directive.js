@@ -173,7 +173,12 @@
                                         scope.wholeNumber = wholeNumberInput;
                                         scope.decimalNumber = convertToDecimal(decimalNumberInput);
                                         scope.numericValue = Number(scope.wholeNumber) + Number(strip(scope.decimalNumber, scope.precision));
-                                        scope.inputObj.callback(scope.numericValue);
+                                        if((isNaN(scope.numericValue)) || (scope.numericValue < 0)) {
+                                            alert("Please enter a valid positive number");
+                                        }
+                                        else {
+                                            scope.inputObj.callback(scope.numericValue);
+                                        }
                                     }
                                 }
                             ]
