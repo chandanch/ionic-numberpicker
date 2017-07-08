@@ -36,7 +36,8 @@
                 scope.decimalNumber = 0;
                 scope.isNegative = false;
                 scope.numericValue = Number(scope.wholeNumber + '.' + scope.decimalNumber);
-
+                scope.wholeNumberSize = scope.inputObj.wholeNumberSize ? scope.inputObj.wholeNumberSize : 30;
+                scope.decimalNumberSize = scope.inputObj.decimalNumberSize ? scope.inputObj.decimalNumberSize : 100;
                 //Changing the style
                 scope.changeFormat = function() {
                     scope.format = (scope.format === "DECIMAL") ? "WHOLE" : "DECIMAL";
@@ -122,6 +123,23 @@
                     return decimalNumberInput;
                 }
 
+                //Validate the enter number 1.check if the number is valid number 2. check if number is above 100
+                function checkNumberValidity(number) {
+                    var numericValue = number;
+                    if((isNaN(numericValue)) || (numericValue < 0)) {
+                        return [false, number]
+                    }
+                    else {
+                        if(numericValue > 100) {
+                            numericValue = 100;
+                            return [true, numericValue]
+                        }
+                        else {
+                            return [true, numericValue];
+                        }
+                    }
+                }
+
                 //Make sure number is not too high
                 scope.checkMax = function() {
                     if (scope.numericValue >= scope.maxValue) {
@@ -173,11 +191,12 @@
                                         scope.wholeNumber = wholeNumberInput;
                                         scope.decimalNumber = convertToDecimal(decimalNumberInput);
                                         scope.numericValue = Number(scope.wholeNumber) + Number(strip(scope.decimalNumber, scope.precision));
-                                        if((isNaN(scope.numericValue)) || (scope.numericValue < 0)) {
+                                        var validNumber = checkNumberValidity(scope.numericValue)
+                                        if(validNumber[0] == false) {
                                             alert("Please enter a valid positive number");
                                         }
                                         else {
-                                            scope.inputObj.callback(scope.numericValue);
+                                            scope.inputObj.callback(validNumber[1]);
                                         }
                                     }
                                 }
