@@ -31,13 +31,15 @@
                 scope.decimalCharacter = scope.inputObj.decimalCharacter ? scope.inputObj.decimalCharacter : '.';
                 scope.setButtonType = scope.inputObj.setButtonType ? scope.inputObj.setButtonType : 'button-positive';
                 scope.closeButtonType = scope.inputObj.closeButtonType ? scope.inputObj.closeButtonType : 'button-stable';
-                scope.wholeNumber = 0;
+                scope.wholeNumber =  0;
                 scope.selectedNumber = 0;
                 scope.decimalNumber = 0;
                 scope.isNegative = false;
                 scope.numericValue = Number(scope.wholeNumber + '.' + scope.decimalNumber);
                 scope.wholeNumberSize = scope.inputObj.wholeNumberSize ? scope.inputObj.wholeNumberSize : 30;
                 scope.decimalNumberSize = scope.inputObj.decimalNumberSize ? scope.inputObj.decimalNumberSize : 100;
+                // scope.wholeNumber = 12,
+                // scope.decimalNumber = 0.0002
                 //Changing the style
                 scope.changeFormat = function() {
                     scope.format = (scope.format === "DECIMAL") ? "WHOLE" : "DECIMAL";
@@ -135,6 +137,9 @@
                             return [true, numericValue]
                         }
                         else {
+                            if(numericValue <= scope.previousValue) {
+                                return [true, scope.previousValue]
+                            }
                             return [true, numericValue];
                         }
                     }
@@ -166,6 +171,7 @@
                         scope.wholeNumber = findWholeNumber(Number(scope.inputValue));
                         scope.decimalNumber = scope.inputValue % 1;
                         scope.numericValue = Number(scope.wholeNumber) + Number(strip(scope.decimalNumber, scope.precision));
+                        scope.previousValue = scope.numericValue;
                         scope.decimalNumber = strip(scope.numericValue % 1);
                 
                         $ionicPopup.show({
